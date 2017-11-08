@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -132,17 +133,17 @@ public class MainTest {
             //how do you get a null collection
     }
 
-    @Test
+    @Test //
     public void linkedList_size_worksCorrect_Test(){
         assertTrue(list.size() == 10);
     }
 
-    @Test
+    @Test //
     public void linkedlist_size_wontShowWrongResults_Test(){
         assertFalse(list.size() == 1_000);
     }
 
-    @Test
+    @Test //
     public void linkedList_retainAll_removeLastElt_sizeIsCorrect_Test(){
         LinkedList<String> list2 = new LinkedList<>();
         for (int i = 0; i < 9; i++){
@@ -153,7 +154,7 @@ public class MainTest {
         assertTrue(list.size() == 9);
     }
 
-    @Test
+    @Test //
     public void linkedList_retainAll_removeLastElt_makeSureEltIsRemoved_Test(){
         LinkedList<String> list2 = new LinkedList<>();
         for (int i = 0; i < 9; i++){
@@ -168,6 +169,20 @@ public class MainTest {
     public void linkedList_retainAll_WhenNull_Test(){
         //how do you get a null collection
     }
+
+    @Test //??????????????????????????????????????
+    public void linkedList_Spliterator_Test(){
+
+    }
+
+    @Test
+    public void linkedList_toArray_Test(){
+
+        assertTrue(list.toArray() instanceof Object[]);
+    }
+    //The reason I'm testing for Object[] and NOT String[] is b/c at runtime
+    //this is treated as an Object array, but it does prove that it IS an Array
+
 
 //    @Test //
 //    public void linkedList_Test(){

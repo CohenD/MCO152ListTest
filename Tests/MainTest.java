@@ -1,9 +1,9 @@
+//Dovi Cohen & Yaakov Liff
+
 import org.junit.Test;
 
 import java.lang.reflect.Array;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Spliterator;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -186,11 +186,6 @@ public class MainTest {
 
     }
 
-    @Test //
-    public void linkedList_Spliterator_Test() {
-        assertTrue(list.spliterator() instanceof Spliterator);
-    }
-
     //The reason I'm testing for Object[] and NOT String[] is b/c at runtime
     //this is treated as an Object array, but it does prove that it IS an Array
     @Test
@@ -237,18 +232,15 @@ public class MainTest {
 
         list.addAll(15, list2);
     }
-
     /////////////////////////////////////////////
     @Test
     public void testContainsElement() {
         assertTrue(list.contains("1"));
     }
-
     @Test
     public void testDoesntContaintElement() {
         assertFalse(list.contains("12"));
     }
-
     /////////////////////////////////////////////
     @Test
     public void testListEquals(){
@@ -273,9 +265,6 @@ public class MainTest {
 
         assertFalse(list2.equals(list));
     }
-    /////////////////////////////////////////////
-    //test hashCode()????
-    ////////////////////////////////////////////
     @Test
     public void testIsEmpty() {
         list = new LinkedList<>();
@@ -337,9 +326,6 @@ public class MainTest {
     }
     /////////////////////////////////////////////
     @Test
-    public void testSet() {
-        list.set(0, "abc");
-        assertTrue(list.get(0).equals("abc"));
     public void testSet(){
         list.set(7, "abc");
         assertTrue(list.get(7).equals("abc"));
@@ -374,7 +360,6 @@ public class MainTest {
         for (int i = 0; i < 5; i++){
             newList.add("" + i);
         }
-
         assertTrue(sub.equals(newList));
     }
     /////////////////////////////////////////////

@@ -17,14 +17,14 @@ public class MainTest {
     }
 
 
-    @Test
+    @Test //
     public void linkedList_addToEndOfListTest(){
 
         list.add("1");
         assertTrue(list.get(10).equals("1"));
     }
 
-    @Test                   //addAll
+    @Test //
     public void linkedList_addColletionToEndOfList_elementInPostionTest(){
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
@@ -35,8 +35,8 @@ public class MainTest {
         assertTrue(list.get(10).equals("100"));
     }
 
-    @Test                   //addAll
-    public void linkedList_addColletionToEndOfList_noElementsDeletedTest(){
+    @Test //
+    public void linkedList_addColletionToEndOfList_noPriorElementsDeletedTest(){
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -48,10 +48,35 @@ public class MainTest {
 
 
 
-    @Test
-    public void clearTest(){
-
+    @Test //
+    public void linkedList_clearTest(){
         list.clear();
         assertTrue(list.size() == 0);
     }
+
+    @Test  //
+    public void linkedList_containsAll_whenTrueTest(){
+        LinkedList<String> list2 = new LinkedList<>();
+        list2.add("100");
+        list2.add("200");
+
+        list.addAll(list2);
+
+        assertTrue(list.containsAll(list2));
+    }
+
+    @Test //
+    public void linkedList_containsAll_whenFalseTest(){
+        LinkedList<String> list2 = new LinkedList<>();
+        list2.add("100");
+        list2.add("200");
+
+        list.add(list2.get(1));
+
+        assertFalse(list.containsAll(list2));
+    }
+//    @Test //
+//    public void linkedList_Test(){
+//
+//    }
 }

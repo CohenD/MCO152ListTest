@@ -75,6 +75,17 @@ public class MainTest {
 
         assertFalse(list.containsAll(list2));
     }
+
+        @Test //
+    public void linkedList_get_WorksNormalTest(){
+        assertTrue(list.get(1).equals("1"));
+    }
+
+        @Test (expected = IndexOutOfBoundsException.class)//
+    public void linkedList_get_RealizeOutOfBoundsTest(){
+        list.get(11);
+    }
+
 //    @Test //
 //    public void linkedList_Test(){
 //

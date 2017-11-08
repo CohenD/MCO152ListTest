@@ -128,10 +128,19 @@ public class MainTest {
     }
 
     @Test  //???????????????????????????????????? (expected = NullPointerException.class)
-    public void linkedList_removeAll_whenNull_ThrowNullPointerException_Test(){
+    public void linkedList_removeAll_WhenNull_Test(){
 
     }
 
+    @Test
+    public void linkedList_size_worksCorrect_Test(){
+        assertTrue(list.size() == 10);
+    }
+
+    @Test
+    public void linkedlist_size_wontShowWrongResults_Test(){
+        assertFalse(list.size() == 1_000);
+    }
 
 //    @Test //
 //    public void linkedList_Test(){

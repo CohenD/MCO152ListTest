@@ -76,17 +76,17 @@ public class MainTest {
         assertFalse(list.containsAll(list2));
     }
 
-        @Test //
-    public void linkedList_get_WorksNormal_Test(){
+    @Test //
+    public void linkedList_get_WhenInBounds_Test(){
         assertTrue(list.get(1).equals("1"));
     }
 
-        @Test (expected = IndexOutOfBoundsException.class)//
+    @Test (expected = IndexOutOfBoundsException.class)//
     public void linkedList_get_RealizeOutOfBoundsTest(){
-        list.get(11);
+        list.get(list.size() + 1);
     }
 
-        @Test //
+    @Test //
     public void linkedList_indexOf_whenInList_Test(){
         assertEquals(list.indexOf("9"), 9);
     }
@@ -96,7 +96,25 @@ public class MainTest {
         assertEquals(list.indexOf("1_000"), -1);
     }
 
+    @Test //????????????????????????????????????????????
+    public void linkedList_Iterator_properSequence_Test(){
 
+    }
+
+    @Test //????????????????????????????????????????????
+    public void linkedList_listIterator_properSequence_Test(){
+
+    }
+
+    @Test //
+    public void linkedList_remove_whenInBounds_Test(){
+        assertEquals(list.remove(0), "0");
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)//
+    public void linkedList_remove_whenOutOfBounds_Test(){
+        list.remove(list.size() + 1);
+    }
 
 //    @Test //
 //    public void linkedList_Test(){

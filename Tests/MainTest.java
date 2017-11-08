@@ -5,19 +5,22 @@ import java.util.LinkedList;
 import static org.junit.Assert.*;
 
 public class MainTest {
+
+    LinkedList<String> list;
+
     @org.junit.Before
     public void setUp() throws Exception {
-        LinkedList<Object> list = new LinkedList();
+         list = new LinkedList<>();
+         for (int i = 0; i < 10; i++){
+             list.add(" " + i);
+         }
     }
 
-    @Test
-    public void aVoid(){
-        assertTrue(false);
-    }
 
     @Test
-    public void addToListTest(){
-
+    public void addToEndOfListTest(){
+        list.add("a");
+        assertTrue(list.size() == 1);
     }
 
 }

@@ -50,6 +50,7 @@ public class MainTest {
     }
 
 
+
     @Test //
     public void linkedList_clearWorks_Test() {
         list.clear();
@@ -199,19 +200,42 @@ public class MainTest {
 
     }
 
+
+
     @Test
     public void testElementSpecifiedPosition() {
         list.add(3, "a");
         assertTrue(list.get(3).equals("a"));
     }
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testElementSpecifiedPositionOutOfBounds(){
+        list.add(11, "abc");
+    }
 
     /////////////////////////////////////////////
     @Test
-    public void testCollectionSpecifiedPosition() {
-        String[] collection = {"abc", "def"};
+    public void testCollectionSpecifiedPosition(){
+        ArrayList<String> list2 = new ArrayList<>();
+        list2.add("ABC");
+        list2.add("DEF");
 
-//        list.add(3 , collection);
-        assertTrue(list.get(3).equals("a"));
+        list.addAll(4, list2);
+        assertTrue(list.get(5).equals("DEF"));
+    }
+    @Test
+    public void testCollectionSpecifiedPositionSize(){
+        ArrayList<String> list2 = new ArrayList<>();
+        list2.add("ABC");
+        list2.add("DEF");
+
+        list.addAll(4, list2);
+        assertTrue(list.size() == 12);
+    }
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testCollectionSpecifiedPositionOutOfBounds(){
+        ArrayList<String> list2 = new ArrayList<>(Arrays.asList("ABC", "DEF"));
+
+        list.addAll(15, list2);
     }
 
     /////////////////////////////////////////////
@@ -227,23 +251,28 @@ public class MainTest {
 
     /////////////////////////////////////////////
     @Test
-    public void listEquals() {
+    public void testListEquals(){
         //Note this is deep because contents are String which are immutable
         LinkedList<String> list2 = (LinkedList<String>) list.clone();
 
         assertTrue(list2.equals(list));
     }
-
     @Test
-    public void listNotEquals() {
+    public void testListNotEquals(){
         //Note this is deep because contents are String which are immutable
         LinkedList<String> list2 = (LinkedList<String>) list.clone();
 
-        list2.set(0, "a");
+        list2.set(4, "a");
 
         assertFalse(list2.equals(list));
     }
+    @Test
+    public void testHalfListNotEquals(){
+        //Note this is deep because contents are String which are immutable
+        LinkedList<String> list2 = (LinkedList<String>) list.subList(0,5);
 
+        assertFalse(list2.equals(list));
+    }
     /////////////////////////////////////////////
     //test hashCode()????
     ////////////////////////////////////////////
@@ -252,93 +281,118 @@ public class MainTest {
         list = new LinkedList<>();
         assertTrue(list.isEmpty());
     }
-
+    @Test
+    public void testIsEmptyOnFullList(){
+        assertFalse(list.isEmpty());
+    }
     /////////////////////////////////////////////
     @Test
     public void testLastIndexAtEnd() {
         list.set(list.size() - 1, "abcd");
         assertTrue(list.lastIndexOf("abcd") == list.size() - 1);
     }
-
     @Test
     public void testLastIndexAtMiddle() {
         list.set(5, "abcd");
         assertTrue(list.lastIndexOf("abcd") == 5);
     }
-
     @Test
     public void testLastIndexAtBegining() {
         list.set(0, "abcd");
         assertTrue(list.lastIndexOf("abcd") == 0);
     }
-
     ///////////////////////////////////////////////
     @Test
-    public void testListIterator() {
-
+    public void testListIterator(){
+        ListIterator<String> stringListIterator = list.listIterator(5);
+        assertTrue(stringListIterator.next().equals("5"));
     }
-
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testListIteratorOutOfBounds(){
+        ListIterator<String> stringListIterator = list.listIterator(14);
+        assertTrue(stringListIterator.next().equals("5"));
+    }
     //////////////////////////////////////////////
     @Test
     public void testRemoveFirstOccurrence() {
         list.remove("0");
         assertTrue(list.get(0).equals("1"));
     }
-
+    @Test
+    public void testRemoveFirstOccurrenceMiddle(){
+        list.remove("5");
+        assertTrue(list.get(5).equals("6"));
+    }
     /////////////////////////////////////////////
     @Test
-    public void testReplaceAll() {
+    public void testReplaceAll(){
+        boolean flag = true;
         list.replaceAll(s -> s + "00");
-        assertTrue(list.get(3).equals("300"));
+        for (String s: list) {
+            if (!s.contains("00")){
+                flag = false;
+            }
+        }
+        assertTrue(flag);
     }
-
     /////////////////////////////////////////////
     @Test
     public void testSet() {
         list.set(0, "abc");
         assertTrue(list.get(0).equals("abc"));
+    public void testSet(){
+        list.set(7, "abc");
+        assertTrue(list.get(7).equals("abc"));
     }
-
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testSetOutOfBounds(){
+        list.set(11, "abc");
+    }
     /////////////////////////////////////////////
     @Test
-    public void testSort() {
-//        list.sort((o1, o2) -> );
-    }
+    public void testSort(){
+        Collections.shuffle(list);
 
+        list.sort((o1, o2) -> o1.charAt(0) - o2.charAt(0));
+
+        boolean flag = true;
+
+        for (int i = 0; i < list.size(); i++){
+            if (!list.get(i).equals("" + i)){
+                flag = false;
+            }
+        }
+        assertTrue(flag);
+    }
     /////////////////////////////////////////////
     @Test
-    public void testSubList() {
+    public void testSubList(){
         LinkedList<String> sub = new LinkedList<>();
         sub.addAll(list.subList(0, 5));
 
         LinkedList<String> newList = new LinkedList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++){
             newList.add("" + i);
         }
 
         assertTrue(sub.equals(newList));
     }
-
     /////////////////////////////////////////////
     @Test
-    public void testToArrayOfSpecifiedType() {
+    public void testToArrayOfSpecifiedType(){
         assertTrue(list.toArray(new String[list.size()]) instanceof String[]);
     }
-
     @Test
     public void testToArrayOfSpecifiedTypeInCorrectOrder() {
 
         String[] array = list.toArray(new String[list.size()]);
         boolean flag = true;
 
-        for (int i = 0; i < list.size(); i++) {
-            if (!list.get(i).equals(array[i])) {
+        for (int i = 0; i < list.size(); i++){
+            if (!list.get(i).equals(array[i])){
                 flag = false;
             }
         }
-
         assertTrue(flag);
     }
-
-
 }

@@ -3,6 +3,7 @@ import org.junit.Test;
 import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Spliterator;
 
 import static org.junit.Assert.*;
 
@@ -89,28 +90,39 @@ public class MainTest {
 
     @Test //
     public void linkedList_indexOf_whenInList_Test() {
-        assertEquals(list.indexOf("9"), 9);
+        assertEquals(9, list.indexOf("9"));
     }
 
     @Test //
     public void linkedList_indexOf_whenNotInList_Test() {
 
-        assertEquals(list.indexOf("1_000"), -1);
+        assertEquals(-1, list.indexOf("1_000"));
     }
 
     @Test //                                                          //???
-    public void linkedList_Iterator_properSequence_Test() {
-
+    public void linkedList_Iterator_hasNext_Test() {
+        assertTrue(list.iterator().hasNext());
     }
 
-    @Test  //                                                        //???
-    public void linkedList_listIterator_properSequence_Test() {
+    @Test //
+    public void linkedList_Iterator_doesnthaveNextWhenClear_Test() {
+        list.clear();
+        assertFalse(list.iterator().hasNext());
+    }
 
+    @Test  //
+    public void linkedList_listIterator_hasNext_Test() {
+        assertTrue(list.listIterator().hasNext());
+    }
+
+    @Test
+    public void linkedList_listIterator_Test(){
+        assertEquals("0", list.listIterator().next());
     }
 
     @Test //
     public void linkedList_remove_whenInBounds_Test() {
-        assertEquals(list.remove(0), "0");
+        assertEquals("0", list.remove(0));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)//
@@ -173,9 +185,9 @@ public class MainTest {
 
     }
 
-    @Test //                                            //???
+    @Test //
     public void linkedList_Spliterator_Test() {
-
+        assertTrue(list.spliterator() instanceof Spliterator);
     }
 
     //The reason I'm testing for Object[] and NOT String[] is b/c at runtime

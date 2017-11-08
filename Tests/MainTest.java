@@ -1,4 +1,3 @@
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -9,14 +8,19 @@ public class MainTest {
 
     LinkedList<String> list;
 
-    @Before
+    @org.junit.Before
     public void setUp() throws Exception {
-        list = new LinkedList<String>();
+         list = new LinkedList<>();
+         for (int i = 0; i < 10; i++){
+             list.add(" " + i);
+         }
     }
 
+
     @Test
-    public void addToPosition(){
-        list.add("");
+    public void addToEndOfListTest(){
+        list.add("a");
+        assertTrue(list.size() == 1);
     }
 
 }

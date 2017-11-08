@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 import static org.junit.Assert.*;
@@ -115,6 +116,22 @@ public class MainTest {
     public void linkedList_remove_whenOutOfBounds_Test(){
         list.remove(list.size() + 1);
     }
+
+    @Test //
+    public void linkedList_removeAll_Normal_Test(){
+        LinkedList<String> list2 = new LinkedList<>();
+        for (int i = 0; i < 10; i++){
+            list2.add("" + i);
+        }
+        list.removeAll(list2);
+        assertTrue(list.size() == 0);
+    }
+
+    @Test  //???????????????????????????????????? (expected = NullPointerException.class)
+    public void linkedList_removeAll_whenNull_ThrowNullPointerException_Test(){
+
+    }
+
 
 //    @Test //
 //    public void linkedList_Test(){

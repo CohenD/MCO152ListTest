@@ -12,22 +12,22 @@ public class MainTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-         list = new LinkedList<>();
-         for (int i = 0; i < 10; i++){
-             list.add("" + i);
-         }
+        list = new LinkedList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add("" + i);
+        }
     }
 
 
     @Test //
-    public void linkedList_addToEndOfList_Test(){
+    public void linkedList_addToEndOfList_Test() {
 
         list.add("1");
         assertTrue(list.get(10).equals("1"));
     }
 
     @Test //
-    public void linkedList_addColletionToEndOfList_elementInPostion_Test(){
+    public void linkedList_addColletionToEndOfList_elementInPostion_Test() {
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -38,7 +38,7 @@ public class MainTest {
     }
 
     @Test //
-    public void linkedList_addColletionToEndOfList_noPriorElementsDeleted_Test(){
+    public void linkedList_addColletionToEndOfList_noPriorElementsDeleted_Test() {
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -49,15 +49,14 @@ public class MainTest {
     }
 
 
-
     @Test //
-    public void linkedList_clearWorks_Test(){
+    public void linkedList_clearWorks_Test() {
         list.clear();
         assertTrue(list.size() == 0);
     }
 
     @Test  //
-    public void linkedList_containsAll_whenTrue_Test(){
+    public void linkedList_containsAll_whenTrue_Test() {
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -68,7 +67,7 @@ public class MainTest {
     }
 
     @Test //
-    public void linkedList_containsAll_whenFalse_Test(){
+    public void linkedList_containsAll_whenFalse_Test() {
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -79,74 +78,76 @@ public class MainTest {
     }
 
     @Test //
-    public void linkedList_get_WhenInBounds_Test(){
+    public void linkedList_get_WhenInBounds_Test() {
         assertTrue(list.get(1).equals("1"));
     }
 
-    @Test (expected = IndexOutOfBoundsException.class)//
-    public void linkedList_get_RealizeOutOfBoundsTest(){
+    @Test(expected = IndexOutOfBoundsException.class)//
+    public void linkedList_get_RealizeOutOfBoundsTest() {
         list.get(list.size() + 1);
     }
 
     @Test //
-    public void linkedList_indexOf_whenInList_Test(){
+    public void linkedList_indexOf_whenInList_Test() {
         assertEquals(list.indexOf("9"), 9);
     }
 
     @Test //
-    public void linkedList_indexOf_whenNotInList_Test(){
+    public void linkedList_indexOf_whenNotInList_Test() {
+
         assertEquals(list.indexOf("1_000"), -1);
     }
 
-    @Test //????????????????????????????????????????????
-    public void linkedList_Iterator_properSequence_Test(){
+    @Test //                                                          //???
+    public void linkedList_Iterator_properSequence_Test() {
 
     }
 
-    @Test //????????????????????????????????????????????
-    public void linkedList_listIterator_properSequence_Test(){
+    @Test  //                                                        //???
+    public void linkedList_listIterator_properSequence_Test() {
 
     }
 
     @Test //
-    public void linkedList_remove_whenInBounds_Test(){
+    public void linkedList_remove_whenInBounds_Test() {
         assertEquals(list.remove(0), "0");
     }
 
-    @Test (expected = IndexOutOfBoundsException.class)//
-    public void linkedList_remove_whenOutOfBounds_Test(){
+    @Test(expected = IndexOutOfBoundsException.class)//
+    public void linkedList_remove_whenOutOfBounds_Test() {
         list.remove(list.size() + 1);
     }
 
     @Test //
-    public void linkedList_removeAll_Normal_Test(){
+    public void linkedList_removeAll_Normal_Test() {
         LinkedList<String> list2 = new LinkedList<>();
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             list2.add("" + i);
         }
         list.removeAll(list2);
         assertTrue(list.size() == 0);
     }
 
-    @Test  //???????????????????????????????????? (expected = NullPointerException.class)
-    public void linkedList_removeAll_WhenNull_Test(){
-            //how do you get a null collection
+    @Test(expected = NullPointerException.class) //
+    public void linkedList_removeAll_WhenNull_Test() {
+        LinkedList<String> nullList = null;
+        list.removeAll(nullList);
     }
 
     @Test //
-    public void linkedList_size_worksCorrect_Test(){
+    public void linkedList_size_worksCorrect_Test() {
         assertTrue(list.size() == 10);
     }
 
     @Test //
-    public void linkedlist_size_wontShowWrongResults_Test(){
+    public void linkedlist_size_wontShowWrongResults_Test() {
         assertFalse(list.size() == 1_000);
     }
 
     @Test //
-    public void linkedList_retainAll_removeLastElt_sizeIsCorrect_Test(){
+    public void linkedList_retainAll_removeLastElt_sizeIsCorrect_Test() {
         LinkedList<String> list2 = new LinkedList<>();
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < 9; i++) {
             list2.add("" + i);
         }
 
@@ -155,9 +156,9 @@ public class MainTest {
     }
 
     @Test //
-    public void linkedList_retainAll_removeLastElt_makeSureEltIsRemoved_Test(){
+    public void linkedList_retainAll_removeLastElt_makeSureEltIsRemoved_Test() {
         LinkedList<String> list2 = new LinkedList<>();
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < 9; i++) {
             list2.add("" + i);
         }
 
@@ -165,13 +166,15 @@ public class MainTest {
         assertFalse(list.contains("9"));
     }
 
-    @Test  //???????????????????????????????????? (expected = NullPointerException.class)
-    public void linkedList_retainAll_WhenNull_Test(){
-        //how do you get a null collection
+    @Test(expected = NullPointerException.class) //
+    public void linkedList_retainAll_WhenNull_Test() {
+        LinkedList<String> nulllList = null;
+        list.retainAll(nulllList);
+
     }
 
-    @Test //??????????????????????????????????????
-    public void linkedList_Spliterator_Test(){
+    @Test //                                            //???
+    public void linkedList_Spliterator_Test() {
 
     }
 
@@ -185,38 +188,42 @@ public class MainTest {
     }
 
     @Test
-    public void testElementSpecifiedPosition(){
-        list.add(3 ,"a");
+    public void testElementSpecifiedPosition() {
+        list.add(3, "a");
         assertTrue(list.get(3).equals("a"));
     }
 
     /////////////////////////////////////////////
     @Test
-    public void testCollectionSpecifiedPosition(){
+    public void testCollectionSpecifiedPosition() {
         String[] collection = {"abc", "def"};
 
 //        list.add(3 , collection);
         assertTrue(list.get(3).equals("a"));
     }
+
     /////////////////////////////////////////////
     @Test
-    public void testContainsElement(){
+    public void testContainsElement() {
         assertTrue(list.contains("1"));
     }
+
     @Test
-    public void testDoesntContaintElement(){
+    public void testDoesntContaintElement() {
         assertFalse(list.contains("12"));
     }
+
     /////////////////////////////////////////////
     @Test
-    public void listEquals(){
+    public void listEquals() {
         //Note this is deep because contents are String which are immutable
         LinkedList<String> list2 = (LinkedList<String>) list.clone();
 
         assertTrue(list2.equals(list));
     }
+
     @Test
-    public void listNotEquals(){
+    public void listNotEquals() {
         //Note this is deep because contents are String which are immutable
         LinkedList<String> list2 = (LinkedList<String>) list.clone();
 
@@ -224,93 +231,102 @@ public class MainTest {
 
         assertFalse(list2.equals(list));
     }
+
     /////////////////////////////////////////////
     //test hashCode()????
     ////////////////////////////////////////////
     @Test
-    public void testIsEmpty(){
+    public void testIsEmpty() {
         list = new LinkedList<>();
         assertTrue(list.isEmpty());
     }
+
     /////////////////////////////////////////////
     @Test
-    public void testLastIndexAtEnd(){
-        list.set(list.size() -1, "abcd");
+    public void testLastIndexAtEnd() {
+        list.set(list.size() - 1, "abcd");
         assertTrue(list.lastIndexOf("abcd") == list.size() - 1);
     }
+
     @Test
-    public void testLastIndexAtMiddle(){
+    public void testLastIndexAtMiddle() {
         list.set(5, "abcd");
         assertTrue(list.lastIndexOf("abcd") == 5);
     }
+
     @Test
-    public void testLastIndexAtBegining(){
+    public void testLastIndexAtBegining() {
         list.set(0, "abcd");
         assertTrue(list.lastIndexOf("abcd") == 0);
     }
+
     ///////////////////////////////////////////////
     @Test
-    public void testListIterator(){
+    public void testListIterator() {
 
     }
+
     //////////////////////////////////////////////
     @Test
-    public void testRemoveFirstOccurrence(){
+    public void testRemoveFirstOccurrence() {
         list.remove("0");
         assertTrue(list.get(0).equals("1"));
     }
+
     /////////////////////////////////////////////
     @Test
-    public void testReplaceAll(){
+    public void testReplaceAll() {
         list.replaceAll(s -> s + "00");
         assertTrue(list.get(3).equals("300"));
     }
+
     /////////////////////////////////////////////
     @Test
-    public void testSet(){
+    public void testSet() {
         list.set(0, "abc");
         assertTrue(list.get(0).equals("abc"));
     }
+
     /////////////////////////////////////////////
     @Test
-    public void testSort(){
+    public void testSort() {
 //        list.sort((o1, o2) -> );
     }
+
     /////////////////////////////////////////////
     @Test
-    public void testSubList(){
+    public void testSubList() {
         LinkedList<String> sub = new LinkedList<>();
         sub.addAll(list.subList(0, 5));
 
         LinkedList<String> newList = new LinkedList<>();
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             newList.add("" + i);
         }
 
         assertTrue(sub.equals(newList));
     }
+
     /////////////////////////////////////////////
     @Test
-    public void testToArrayOfSpecifiedType(){
+    public void testToArrayOfSpecifiedType() {
         assertTrue(list.toArray(new String[list.size()]) instanceof String[]);
     }
+
     @Test
-    public void testToArrayOfSpecifiedTypeInCorrectOrder(){
+    public void testToArrayOfSpecifiedTypeInCorrectOrder() {
 
         String[] array = list.toArray(new String[list.size()]);
         boolean flag = true;
 
-        for (int i = 0; i < list.size(); i++){
-            if (!list.get(i).equals(array[i])){
+        for (int i = 0; i < list.size(); i++) {
+            if (!list.get(i).equals(array[i])) {
                 flag = false;
             }
         }
 
         assertTrue(flag);
     }
-
-
-
 
 
 }

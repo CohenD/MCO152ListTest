@@ -18,14 +18,14 @@ public class MainTest {
 
 
     @Test //
-    public void linkedList_addToEndOfListTest(){
+    public void linkedList_addToEndOfList_Test(){
 
         list.add("1");
         assertTrue(list.get(10).equals("1"));
     }
 
     @Test //
-    public void linkedList_addColletionToEndOfList_elementInPostionTest(){
+    public void linkedList_addColletionToEndOfList_elementInPostion_Test(){
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -36,7 +36,7 @@ public class MainTest {
     }
 
     @Test //
-    public void linkedList_addColletionToEndOfList_noPriorElementsDeletedTest(){
+    public void linkedList_addColletionToEndOfList_noPriorElementsDeleted_Test(){
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -49,13 +49,13 @@ public class MainTest {
 
 
     @Test //
-    public void linkedList_clearTest(){
+    public void linkedList_clearWorks_Test(){
         list.clear();
         assertTrue(list.size() == 0);
     }
 
     @Test  //
-    public void linkedList_containsAll_whenTrueTest(){
+    public void linkedList_containsAll_whenTrue_Test(){
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -66,7 +66,7 @@ public class MainTest {
     }
 
     @Test //
-    public void linkedList_containsAll_whenFalseTest(){
+    public void linkedList_containsAll_whenFalse_Test(){
         LinkedList<String> list2 = new LinkedList<>();
         list2.add("100");
         list2.add("200");
@@ -77,7 +77,7 @@ public class MainTest {
     }
 
         @Test //
-    public void linkedList_get_WorksNormalTest(){
+    public void linkedList_get_WorksNormal_Test(){
         assertTrue(list.get(1).equals("1"));
     }
 
@@ -85,6 +85,18 @@ public class MainTest {
     public void linkedList_get_RealizeOutOfBoundsTest(){
         list.get(11);
     }
+
+        @Test //
+    public void linkedList_indexOf_whenInList_Test(){
+        assertEquals(list.indexOf("9"), 9);
+    }
+
+    @Test //
+    public void linkedList_indexOf_whenNotInList_Test(){
+        assertEquals(list.indexOf("1_000"), -1);
+    }
+
+
 
 //    @Test //
 //    public void linkedList_Test(){

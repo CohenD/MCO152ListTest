@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -5,19 +6,17 @@ import java.util.LinkedList;
 import static org.junit.Assert.*;
 
 public class MainTest {
-    @org.junit.Before
+
+    LinkedList<String> list;
+
+    @Before
     public void setUp() throws Exception {
-        LinkedList<Object> list = new LinkedList();
+        list = new LinkedList<String>();
     }
 
     @Test
-    public void aVoid(){
-        assertTrue(false);
-    }
-
-    @Test
-    public void addToListTest(){
-
+    public void addToPosition(){
+        list.add("");
     }
 
 }

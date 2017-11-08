@@ -129,7 +129,7 @@ public class MainTest {
 
     @Test  //???????????????????????????????????? (expected = NullPointerException.class)
     public void linkedList_removeAll_WhenNull_Test(){
-
+            //how do you get a null collection
     }
 
     @Test
@@ -140,6 +140,33 @@ public class MainTest {
     @Test
     public void linkedlist_size_wontShowWrongResults_Test(){
         assertFalse(list.size() == 1_000);
+    }
+
+    @Test
+    public void linkedList_retainAll_removeLastElt_sizeIsCorrect_Test(){
+        LinkedList<String> list2 = new LinkedList<>();
+        for (int i = 0; i < 9; i++){
+            list2.add("" + i);
+        }
+
+        list.retainAll(list2);
+        assertTrue(list.size() == 9);
+    }
+
+    @Test
+    public void linkedList_retainAll_removeLastElt_makeSureEltIsRemoved_Test(){
+        LinkedList<String> list2 = new LinkedList<>();
+        for (int i = 0; i < 9; i++){
+            list2.add("" + i);
+        }
+
+        list.retainAll(list2);
+        assertFalse(list.contains("9"));
+    }
+
+    @Test  //???????????????????????????????????? (expected = NullPointerException.class)
+    public void linkedList_retainAll_WhenNull_Test(){
+        //how do you get a null collection
     }
 
 //    @Test //
